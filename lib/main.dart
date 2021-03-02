@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:listmap/Result.dart';
 
 // import 'package:flutter/services.dart';
 void main() {
@@ -19,27 +19,22 @@ class _MyAppState extends State<MyApp> {
   var listItem = ["Kelvin", "Reamur"];
   final inputController = TextEditingController();
   String _newValue = "Kelvin";
+  double _result = 0;
+  double _inputUser = 0;
+  List<String> listViewItem = List<String>();
 
-  get result => null;
+  get result => 1;
   // double _result = 0;
 
-  void inputRumus() {
+  void perhitunganSuhu() {
     setState(() {
-      input = double.parse(inputController.text);
-      kelvin = input + 273;
-      reamur = (4 / 5) * input;
+      _inputUser = double.parse(inputController.text);
+      if (_newValue == "Kelvin")
+        _result = _inputUser + 273;
+      else
+        _result = (4 / 5) * _inputUser;
     });
   }
-
-  // void perhitunganSuhu() {
-  //   setState(() {
-  //     var _inputUser = double.parse(inputController.text);
-  //     if (_newValue == "Kelvin")
-  //       _result = _inputUser + 273;
-  //     else
-  //       _result = (4 / 5) * _inputUser;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -82,22 +77,10 @@ class _MyAppState extends State<MyApp> {
                     });
                   },
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Hasil",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    Text(
-                      result.toStringAsFixed(1),
-                      style: TextStyle(fontSize: 30),
-                    )
-                  ],
-                ),
+                Result(result: _result),
                 RaisedButton(
                     color: Colors.blue,
-                    onPressed: inputRumus,
+                    onPressed: perhitunganSuhu,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

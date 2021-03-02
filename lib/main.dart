@@ -48,6 +48,7 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text("Konverter Suhu"),
         ),
+
         body: Container(
             margin: EdgeInsets.all(8),
             child: Column(
@@ -63,6 +64,7 @@ class _MyAppState extends State<MyApp> {
                   keyboardType: TextInputType.numberWithOptions(
                       decimal: true, signed: false),
                 ),
+                
                 DropdownButton<String>(
                   items: listItem.map((String value) {
                     return DropdownMenuItem<String>(
@@ -78,6 +80,7 @@ class _MyAppState extends State<MyApp> {
                   },
                 ),
                 Result(result: _result),
+
                 RaisedButton(
                     color: Colors.blue,
                     onPressed: perhitunganSuhu,

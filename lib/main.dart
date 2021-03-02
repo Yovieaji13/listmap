@@ -33,6 +33,7 @@ class _MyAppState extends State<MyApp> {
         _result = _inputUser + 273;
       else
         _result = (4 / 5) * _inputUser;
+      listViewItem.add("$_newValue : $_result");
     });
   }
 
@@ -76,6 +77,7 @@ class _MyAppState extends State<MyApp> {
                   onChanged: (String changeValue) {
                     setState(() {
                       _newValue = changeValue;
+                      perhitunganSuhu();
                     });
                   },
                 ),
